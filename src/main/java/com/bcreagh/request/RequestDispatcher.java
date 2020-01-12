@@ -5,7 +5,7 @@ package com.bcreagh.request;
  */
 public class RequestDispatcher {
 
-    public void dispatch(BriDbRequest request) {
+    public void dispatch(Request request) {
 
     }
 

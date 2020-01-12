@@ -1,6 +1,6 @@
 package com.bcreagh;
 
-import com.bcreagh.request.BriDbRequest;
+import com.bcreagh.request.Request;
 import com.bcreagh.request.RequestDispatcher;
 import com.bcreagh.request.RequestFactory;
 
@@ -24,7 +24,11 @@ public class BriDbCli
 
         while (!(input.length > 0 && input[0].equals("exit"))) {
 
-            BriDbRequest request = requestFactory.createRequest(input);
+            if (input.length == 0) {
+                continue;
+            }
+
+            Request request = requestFactory.createRequest(input);
             requestDispatcher.dispatch(request);
 
             input = getNextLine();
