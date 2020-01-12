@@ -1,13 +1,37 @@
 package com.bcreagh;
 
+import com.bcreagh.request.BriDbRequest;
+import com.bcreagh.request.RequestDispatcher;
+import com.bcreagh.request.RequestFactory;
+
+import java.util.Scanner;
+
 /**
- * Hello world!
- *
+ * Provides a CLI for the database.
  */
 public class BriDbCli
 {
+
+    private static Scanner scanner;
+
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        scanner = new Scanner(System.in);
+        RequestFactory requestFactory = new RequestFactory();
+        RequestDispatcher requestDispatcher = new RequestDispatcher();
+
+        String[] input = getNextLine();
+
+        while (!(input.length > 0 && input[0].equals("exit"))) {
+
+            BriDbRequest request = requestFactory.createRequest(input);
+            requestDispatcher.dispatch(request);
+
+            input = getNextLine();
+        }
+    }
+
+    private static String[] getNextLine() {
+        return scanner.nextLine().split("\\s+");
     }
 }
