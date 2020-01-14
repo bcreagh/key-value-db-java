@@ -1,4 +1,4 @@
-package com.bcreagh;
+package com.bcreagh.request;
 
 import com.bcreagh.exception.RequestCreationException;
 import com.bcreagh.request.Request;

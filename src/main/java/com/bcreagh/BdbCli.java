@@ -9,7 +9,7 @@ import java.util.Scanner;
 /**
  * Provides a CLI for the database.
  */
-public class BriDbCli
+public class BdbCli
 {
 
     private static Scanner scanner;
@@ -18,7 +18,7 @@ public class BriDbCli
     {
         scanner = new Scanner(System.in);
         RequestFactory requestFactory = new RequestFactory();
-        RequestDispatcher requestDispatcher = new RequestDispatcher();
+        RequestDispatcher requestDispatcher = BdbInitializer.initialize();
 
         String[] input = getNextLine();
 
