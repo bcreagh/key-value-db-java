@@ -18,7 +18,15 @@ public class BdbCli
     {
         scanner = new Scanner(System.in);
         RequestFactory requestFactory = new RequestFactory();
-        RequestDispatcher requestDispatcher = BdbInitializer.initialize();
+
+        RequestDispatcher requestDispatcher;
+
+        if (args.length == 0) {
+            requestDispatcher = BdbInitializer.initialize();
+        } else {
+            requestDispatcher = BdbInitializer.initialize(args[0]);
+        }
+
 
         String[] input = getNextLine();
 

@@ -9,6 +9,10 @@ import java.nio.file.Paths;
 
 public class BdbInitializer {
 
+    public static RequestDispatcher initialize() {
+        return initialize("bdbData.db");
+    }
+
     public static RequestDispatcher initialize(String dbFile) {
 
         BlockService blockService = new BlockService(Paths.get(dbFile));
@@ -21,5 +25,7 @@ public class BdbInitializer {
 
         RequestDispatcher requestDispatcher = new RequestDispatcher();
         requestDispatcher.setBdbTree(bdbTree);
+
+        return requestDispatcher;
     }
 }
