@@ -1,8 +1,9 @@
 package com.bcreagh;
 
-import com.bcreagh.data.BdbTree;
+import com.bcreagh.data.BinaryNodeBlock;
+import com.bcreagh.data.BinaryNodeService;
 import com.bcreagh.data.BlockService;
-import com.bcreagh.data.NodeService;
+import com.bcreagh.data.RedBlackTree;
 import com.bcreagh.request.RequestDispatcher;
 
 import java.nio.file.Paths;
@@ -15,12 +16,12 @@ public class BdbInitializer {
 
     public static RequestDispatcher initialize(String dbFile) {
 
-        BlockService blockService = new BlockService(Paths.get(dbFile));
+        BlockService<BinaryNodeBlock> blockService = new BlockService<>(Paths.get(dbFile), BinaryNodeBlock.class);
 
-        NodeService nodeService = new NodeService();
+        BinaryNodeService nodeService = new BinaryNodeService();
         nodeService.setBlockService(blockService);
 
-        BdbTree bdbTree = new BdbTree();
+        RedBlackTree bdbTree = new RedBlackTree();
         bdbTree.setNodeService(nodeService);
 
         RequestDispatcher requestDispatcher = new RequestDispatcher();
